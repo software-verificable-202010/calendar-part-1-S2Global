@@ -21,64 +21,73 @@ namespace CalendarApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        public DateTime CalendarDate;
+        public static DateTime CalendarDate;
 
         public MainWindow()
         {
             System.Globalization.Calendar calendar = CultureInfo.InvariantCulture.Calendar;
             InitializeComponent();
             CalendarDate = DateTime.Now;
-            SetCalendar();
+            UpdateCalendar();
         }
 
-        public void SetCalendar()
+        public void UpdateCalendar()
         {
             MonthView.Children.Clear();
-            SetTitle();
-            SetRectangle();
-            SetDayNumbers();
+            UpdateTitle();
+            UpdateRectangle();
+            UpdateDayNumbers();
         }
 
         private void NextClick(object sender, RoutedEventArgs e)
         {
-            CalendarDate = CalendarDate.AddMonths(1);
-            SetCalendar();
+            int nextMonth = 1;
+            CalendarDate = CalendarDate.AddMonths(nextMonth);
+            UpdateCalendar();
         }
 
         private void PreviousClick(object sender, RoutedEventArgs e)
         {
-            CalendarDate = CalendarDate.AddMonths(-1);
-            SetCalendar();
+            int previousMonth = -1;
+            CalendarDate = CalendarDate.AddMonths(previousMonth);
+            UpdateCalendar();
         }
 
-        private void SetRectangle()
+        private void UpdateRectangle()
         {
+            int weekendRowProperty = 0;
+            int weekendColumnProperty = 5;
+            int weekendRowSpanProperty = 6;
+            int weekendColumnSpanProperty = 2;
             Rectangle weekendHighlight = new Rectangle();
-            weekendHighlight.SetValue(Grid.RowProperty, 0);
-            weekendHighlight.SetValue(Grid.ColumnProperty, 5);
-            weekendHighlight.SetValue(Grid.RowSpanProperty, 6);
-            weekendHighlight.SetValue(Grid.ColumnSpanProperty, 2);
+            weekendHighlight.SetValue(Grid.RowProperty, weekendRowProperty);
+            weekendHighlight.SetValue(Grid.ColumnProperty, weekendColumnProperty);
+            weekendHighlight.SetValue(Grid.RowSpanProperty, weekendRowSpanProperty);
+            weekendHighlight.SetValue(Grid.ColumnSpanProperty, weekendColumnSpanProperty);
             SolidColorBrush rectangleColourFill = new SolidColorBrush();
             rectangleColourFill.Color = Color.FromArgb(100, 127, 255, 212);
             weekendHighlight.SetValue(Shape.FillProperty, rectangleColourFill);
             MonthView.Children.Add(weekendHighlight);
         }
 
-        private void SetDayNumbers()
+        private void UpdateDayNumbers()
         {
-            int sunday = 6;
+            int sunday = 7;
             int year = CalendarDate.Year;
             int month = CalendarDate.Month;
-            DateTime firstDayOfMonth = new DateTime(year, month, 1);
+            int firstDay = 1;
+            DateTime firstDayOfMonth = new DateTime(year, month, firstDay);
             int daysInMonth = DateTime.DaysInMonth(year, month);
             int firstDayOfWeek = (int)firstDayOfMonth.DayOfWeek;
+            System.Diagnostics.Debug.WriteLine(firstDayOfWeek);
             if (firstDayOfWeek == 0)
             {
                 firstDayOfWeek = sunday;
             }
+            sunday--;
             int day = 1;
             int week = 0;
-            int weekDay = firstDayOfWeek - 1;
+            int weekDay = firstDayOfWeek - day;
             for (int i = firstDayOfWeek; i < daysInMonth + firstDayOfWeek; i++)
             {
                 TextBlock dayNumber = new TextBlock();
@@ -99,7 +108,7 @@ namespace CalendarApp
             }
         }
 
-        private void SetTitle()
+        private void UpdateTitle()
         {
             string title = CalendarDate.ToString("MMMM") + " " + CalendarDate.Year;
             Title.Text = title;

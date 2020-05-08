@@ -14,3 +14,8 @@ D:\Documents\Programming\Verificable\Proyecto\CalendarApp\obj\Debug\netcoreapp3.
 D:\Documents\Programming\Verificable\Proyecto\CalendarApp\obj\Debug\netcoreapp3.0\CalendarApp.AssemblyInfo.cs
 D:\Documents\Programming\Verificable\Proyecto\CalendarApp\obj\Debug\netcoreapp3.0\CalendarApp.dll
 D:\Documents\Programming\Verificable\Proyecto\CalendarApp\obj\Debug\netcoreapp3.0\CalendarApp.pdb
+D:\Documents\Programming\Verificable\Proyecto\CalendarApp\obj\Debug\netcoreapp3.0\CalendarApp.csprojAssemblyReference.cache
+D:\Documents\Programming\Verificable\Proyecto\CalendarApp\obj\Debug\netcoreapp3.0\WeekWindow.g.cs
+D:\Documents\Programming\Verificable\Proyecto\CalendarApp\obj\Debug\netcoreapp3.0\WeekWindow.baml
+D:\Documents\Programming\Verificable\Proyecto\CalendarApp\obj\Debug\netcoreapp3.0\CalendarApp.csproj.CoreCompileInputs.cache
+D:\Documents\Programming\Verificable\Proyecto\CalendarApp\obj\Debug\netcoreapp3.0\CalendarApp.genruntimeconfig.cache
